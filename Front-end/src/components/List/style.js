@@ -29,17 +29,17 @@ export const InfoContainer = styled.div`
     }
 
     span {
-        margin-top: 1.5rem;
+        margin-top: 0.5rem;
         display: block;
 
         h4 {
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
             font-size: 2.0rem;
 
         }
 
         a {
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
             font-size: 1.5rem;
             color: var(--text-title);
             text-decoration: none;
