@@ -22,8 +22,8 @@ export default function Header() {
                 <OptionContainer>
                     <section>
                         <select>
-                            <option value='todas'>Todas</option>
                             <option value='mercadolibre'>Mercado Livre</option>
+                            <option value='todas'>Todas</option>
                             <option value='buscape'>Buscapé</option>
                         </select>
                     </section>
