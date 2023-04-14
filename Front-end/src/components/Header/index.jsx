@@ -1,45 +1,45 @@
-import { useEffect, useState } from "react"
-import { Container, OptionContainer, HeaderContainer } from "./style"
-import  { fetchApi }  from "../../services/fetch"
+import { useEffect, useContext } from "react";
+import { Container, OptionContainer, HeaderContainer } from "./style";
+import  { fetchApi }  from "../../services/fetch";
+import { FilterContext } from "../../contexts/FilterContext";
 
 export default function Header() {
-    const [ web, setWeb ] = useState('')
-    const [ categoria, setCategoria ] = useState('')
-    const [ search, setSearch ] = useState('')
-    const [ searchResults, setSearchResults ] = useState([])
+
+    const { 
+            category, 
+            setCategory,
+            webSite,
+            setWebSite,
+            search,
+            setSearch,
+            setSearchResults,
+        } = useContext(FilterContext)
 
 
     async function handleClick() {
-        const response = await fetchApi(web, categoria)
-        setSearchResults(response)
-        console.log(searchResults)
+        const response = await fetchApi(webSite, category)
+        setSearchResults(response.results)
+        console.log(response.results)
+
     }
 
-
-    // function filterByName() {
-    //     const filtered = searchResults.filter((item) => {
-    //         return item.title.toLowerCase().includes(search.toLowerCase())
-    //     })
-    //     setSearchResults(filtered)
-    // }
-
     useEffect(() => {
-        handleClick()
+        handleClick();
     
-    }, [web, categoria])
+    }, [webSite, category])
 
     return (
         <HeaderContainer>
             <Container>
                 <OptionContainer>
                     <section>
-                        <select value={web} onChange={(e) => setWeb(e.target.value)}>
+                        <select value={webSite} onChange={(e) => setWebSite(e.target.value)}>
                             <option value='mercadolibre'>Mercado Livre</option>
                             <option value='buscape'>Buscapé</option>
                         </select>
                     </section>
                     <section>
-                        <select value={categoria} onChange={ (e) => setCategoria(e.target.value)}>
+                        <select value={category} onChange={ (e) => setCategory(e.target.value)}>
                             <option value='geladeira'>Geladeira</option>
                             <option value='tv'>TV</option>
                             <option value='celular'>Celular</option>

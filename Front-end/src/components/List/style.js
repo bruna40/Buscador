@@ -14,11 +14,14 @@ export const ProductContainer = styled.div`
 
 export const ImageContainer = styled.div`
     img {
+        margin-top: 2rem;
+        width: 70%;
         object-fit: cover;
     }
 `;
 
 export const InfoContainer = styled.div`
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     margin-right: 4rem;
