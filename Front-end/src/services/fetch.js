@@ -23,7 +23,7 @@ async function  fetchApi(website, categoria) {
 
     return await fetch(url)
                     .then((response) => response.json())
-                    .then((data) => data)
+                    .then((data) => data.results)
                     .catch((error) => console.log(error));
 
     

@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContainer, ImageContainer,InfoContainer } from "./style"
 import { FilterContext } from "../../contexts/FilterContext";
+import Message from "../Message";
 
 
 export default function List() {
-    const { searchResults } = useContext(FilterContext)
-    console.log(searchResults)
+    const { searchResults, setSearchResults, search } = useContext(FilterContext)
+
     return (
         <>
             {searchResults && searchResults.length > 0 ? searchResults.map((product) => {
@@ -26,7 +27,7 @@ export default function List() {
                         </span>
                     </InfoContainer>
                 </ProductContainer>)
-            }): <h1>Bem-vindo ao Buscador</h1> }
+            }): <Message />}
         </>
         
     ) 

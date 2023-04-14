@@ -6,27 +6,40 @@ import { FilterContext } from "../../contexts/FilterContext";
 export default function Header() {
 
     const { 
-            category, 
-            setCategory,
-            webSite,
-            setWebSite,
-            search,
-            setSearch,
-            setSearchResults,
-        } = useContext(FilterContext)
+        category, 
+        setCategory,
+        webSite,
+        setWebSite,
+        search,
+        setSearch,
+        searchResults,
+        setSearchResults,
+    } = useContext(FilterContext);
 
 
     async function handleClick() {
-        const response = await fetchApi(webSite, category)
-        setSearchResults(response.results)
-        console.log(response.results)
+        const response = await fetchApi(webSite, category);
+        setSearchResults(response);
 
     }
 
     useEffect(() => {
         handleClick();
     
-    }, [webSite, category])
+    }, [webSite, category]);
+
+    
+    useEffect(() => {
+        const filteredProducts = [];
+        for (let i = 0; i < searchResults.length; i++) {
+          const product = searchResults[i];
+          if (product.title.toLowerCase().includes(search.toLowerCase())) {
+            filteredProducts.push(product);
+          }
+        }
+
+        setSearchResults(filteredProducts);
+    }, [search]);
 
     return (
         <HeaderContainer>
